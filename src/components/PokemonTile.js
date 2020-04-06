@@ -49,14 +49,14 @@ const PokemonTile = (props) => {
   }
 
   return (
-    <div className="pokemon--container">
+    <div className="pokemon--container col-lg-3 col-md-6 col-sm-12">
       <div className="pokemon--wrapper">
         <div className="pokemon__header">
           <div className="pokemon__image--wrapper">
             <img className="pokemon__image" src={img_src} alt="pokemon-front" />
           </div>
           <div className="pokemon__name--wrapper">
-            <h1 className="pokemon__name">{name}</h1>
+            <h2 className="pokemon__name">{name}</h2>
           </div>
         </div>
 

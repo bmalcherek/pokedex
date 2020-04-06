@@ -1,5 +1,6 @@
 @import "colors.scss";
 @import "progress.scss";
+@import "grid.scss";
 
 html {
   font-size: 62.5%;
@@ -12,15 +13,41 @@ body {
   margin: 0;
 }
 
+.header {
+  background-color: #ee1515;
+  height: 10rem;
+  width: 100%;
+  border-bottom: solid 0.3rem #222224;
+
+  &__logo--wrapper {
+    // width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin-left: 3rem;
+  }
+
+  &__logo {
+    height: 6rem;
+    width: auto;
+  }
+
+  &__name {
+    padding-left: 2rem;
+    color: #222224;
+  }
+}
+
 .app {
   display: flex;
   justify-content: flex-start;
   flex-flow: row wrap;
-  margin: 0 10rem;
-}
 
-.pokemon--container {
-  width: 25%;
+  @media screen and (max-width: 900px) {
+    margin: 0 1.5rem;
+  }
+  margin: 0 10rem;
 }
 
 .pokemon--wrapper {
@@ -37,12 +64,19 @@ body {
 
     .pokemon__image--wrapper {
       margin-left: 1.5rem;
+      @media screen and (max-width: 900px) {
+        margin-left: 0;
+      }
+
       float: left;
       width: 96px;
     }
 
     .pokemon__name--wrapper {
       width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       .pokemon__name {
         text-align: center;
@@ -71,6 +105,7 @@ body {
 
   .pokemon__stats--wrapper {
     width: 100%;
+    margin-bottom: 1rem;
 
     .pokemon__stats__text--wrapper {
       width: 100%;
