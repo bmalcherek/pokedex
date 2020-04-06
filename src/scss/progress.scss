@@ -8,21 +8,24 @@ $attack: #536dfe;
 .progress--wrapper {
   display: flex;
   align-items: center;
+  height: 4rem;
 
   .progress__text--wrapper {
     float: left;
-    margin: auto;
+    // margin: auto;
+    width: 18rem;
 
     .progress__text {
-      padding: 8px;
+      padding-left: 1rem;
+      margin: 0;
     }
   }
 
   .progress-bar {
     position: relative;
-    height: 10px;
+    height: 1.3rem;
     width: 100%;
-    border-radius: 40px;
+    border-radius: 4rem;
     border: solid 1px lightgray;
 
     .filler {
@@ -58,6 +61,7 @@ $attack: #536dfe;
 
   .progress__value--wrapper {
     float: right;
+    width: 8rem;
 
     .progress__value {
       padding: 8px;

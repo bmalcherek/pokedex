@@ -3,6 +3,9 @@ import axios from "axios";
 
 import Progress from "./Progress";
 
+import Height from "../assets/height.svg";
+import Weight from "../assets/weight-solid.svg";
+
 const MAX_SPEED = 180;
 const MAX_HP = 255;
 const MAX_SP_DEFENSE = 230;
@@ -25,7 +28,7 @@ const PokemonTile = (props) => {
   const img_src = loaded ? pokemon.sprites.front_default : null;
   const name = loaded ? pokemon.name.toUpperCase() : null;
 
-  const base_xp = loaded ? pokemon.base_experience : null;
+  const baseXp = loaded ? pokemon.base_experience : null;
   const height = loaded ? pokemon.height : null;
   const weight = loaded ? pokemon.weight : null;
 
@@ -47,68 +50,91 @@ const PokemonTile = (props) => {
 
   return (
     <div className="pokemon--container">
-      <div className="pokemon__header">
-        <div className="pokemon__image--wraper">
-          <img className="pokemon__image" src={img_src} alt="test" />
+      <div className="pokemon--wrapper">
+        <div className="pokemon__header">
+          <div className="pokemon__image--wrapper">
+            <img className="pokemon__image" src={img_src} alt="pokemon-front" />
+          </div>
+          <div className="pokemon__name--wrapper">
+            <h1 className="pokemon__name">{name}</h1>
+          </div>
         </div>
-        <div className="pokemon__name--wrapper">
-          <h1 className="pokemon__name">{name}</h1>
+
+        <div className="pokemon__types--wrapper">
+          <div className="pokemon__types--text--wrapper">
+            <h3 className="pokemon__types--text">Types</h3>
+          </div>
+          <div className="pokemon__types">{types}</div>
         </div>
-      </div>
 
-      <div className="pokemon__types--wrapper">
-        <h3 className="pokemon__types--text">Types</h3>
-        <div className="pokemon__types">{types}</div>
-      </div>
+        <div className="pokemon__stats--wrapper">
+          <div className="pokemon__stats__text--wrapper">
+            <h3 className="pokemon__stats__text">Stats</h3>
+          </div>
+          <div className="pokemon__stats__base-stats">
+            <span>{baseXp} XP </span>
+            <div className="pokemon__stats__base-stats__item">
+              <img
+                src={Height}
+                alt="height"
+                className="pokemon__stats__base-stats__icon"
+              />
+              {height}
+            </div>
+            <div className="pokemon__stats__base-stats__item">
+              <img
+                src={Weight}
+                alt="weight"
+                className="pokemon__stats__base-stats__icon weight"
+              />
+              {weight}
+            </div>
+          </div>
 
-      <div className="pokemon__stats--wrapper">
-        <h3 className="pokemon__stats--text">Stats</h3>
-        <ul className="pokemon__stats">
-          <li className="pokemon__stats__base-xp">Base XP: {base_xp}</li>
-          <li className="pokemon__stats__height">Height: {height}</li>
-          <li className="pokemon__stats__weight">Weight: {weight}</li>
-        </ul>
-        <Progress
-          percentage={`${(speed / MAX_SPEED) * 100}%`}
-          type="speed"
-          text="Speed"
-          value={speed}
-        />
+          <div className="pokemon__stats__advanced-stats">
+            <Progress
+              percentage={`${(speed / MAX_SPEED) * 100}%`}
+              type="speed"
+              text="Speed"
+              value={speed}
+            />
 
-        <Progress
-          percentage={`${(hp / MAX_HP) * 100}%`}
-          type="hp"
-          text="HP"
-          value={hp}
-        />
+            <Progress
+              percentage={`${(hp / MAX_HP) * 100}%`}
+              type="hp"
+              text="HP"
+              value={hp}
+            />
 
-        <Progress
-          percentage={`${(spDefense / MAX_SP_DEFENSE) * 100}%`}
-          type="special-defense"
-          text="Sp. Defense"
-          value={spDefense}
-        />
+            <Progress
+              percentage={`${(spDefense / MAX_SP_DEFENSE) * 100}%`}
+              type="special-defense"
+              text="Sp. Defense"
+              value={spDefense}
+            />
 
-        <Progress
-          percentage={`${(defense / MAX_DEFENSE) * 100}%`}
-          type="defense"
-          text="Defense"
-          value={defense}
-        />
+            <Progress
+              percentage={`${(defense / MAX_DEFENSE) * 100}%`}
+              type="defense"
+              text="Defense"
+              value={defense}
+            />
 
-        <Progress
-          percentage={`${(spAttack / MAX_SP_ATTACK) * 100}%`}
-          type="special-attack"
-          text="Sp. Attack"
-          value={spAttack}
-        />
+            <Progress
+              percentage={`${(spAttack / MAX_SP_ATTACK) * 100}%`}
+              type="special-attack"
+              text="Sp. Attack"
+              value={spAttack}
+            />
 
-        <Progress
-          percentage={`${(attack / MAX_ATTACK) * 100}%`}
-          type="attack"
-          text="Attack"
-          value={attack}
-        />
+            <Progress
+              percentage={`${(attack / MAX_ATTACK) * 100}%`}
+              type="attack"
+              text="Attack"
+              value={attack}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
