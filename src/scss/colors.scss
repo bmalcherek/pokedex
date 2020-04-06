@@ -1,0 +1,27 @@
+$bug-light: #c6d16e;
+$bug: #a8b820;
+$bug-dark: #6d7815;
+
+// ADD HERE
+
+$grass-light: #a7db8d;
+$grass: #78c850;
+$grass-dark: #4e8234;
+
+// ADD HERE
+
+$poison-light: #c183c1;
+$poison: #a040a0;
+$posion-dark: #682a68;
+
+.bug {
+  background-color: $bug;
+}
+
+.grass {
+  background-color: $grass;
+}
+
+.poison {
+  background-color: $poison;
+}

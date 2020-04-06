@@ -1,0 +1,49 @@
+@import "colors.scss";
+
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.pokemon--container {
+  display: flex;
+  flex-wrap: wrap;
+
+  border: solid 1px lightgray;
+  border-radius: 25px;
+
+  width: (1/4) * 100%;
+  padding: 8px;
+
+  .pokemon__header {
+    display: flex;
+    width: 100%;
+
+    border-bottom: solid 1px lightgray;
+
+    .pokemon__image--wrapper {
+      float: left;
+      width: 96px;
+    }
+
+    .pokemon__name--wrapper {
+      width: 100%;
+
+      .pokemon__name {
+        text-align: center;
+      }
+    }
+  }
+
+  .pokemon__type {
+    padding: 3px 8px;
+    margin: 0 5px;
+
+    border-radius: 8px;
+  }
+
+  .pokemon__stats--wrapper {
+    width: 100%;
+  }
+}
