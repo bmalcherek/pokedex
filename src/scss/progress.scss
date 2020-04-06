@@ -1,0 +1,66 @@
+$speed: #b2ff59;
+$hp: #ff5252;
+$special-defense: #ffd740;
+$defense: #ffab40;
+$special-attack: #40c4ff;
+$attack: #536dfe;
+
+.progress--wrapper {
+  display: flex;
+  align-items: center;
+
+  .progress__text--wrapper {
+    float: left;
+    margin: auto;
+
+    .progress__text {
+      padding: 8px;
+    }
+  }
+
+  .progress-bar {
+    position: relative;
+    height: 10px;
+    width: 100%;
+    border-radius: 40px;
+    border: solid 1px lightgray;
+
+    .filler {
+      height: 100%;
+      border-radius: inherit;
+      transition: 0.5s ease-in;
+    }
+
+    .speed {
+      background: $speed;
+    }
+
+    .hp {
+      background: $hp;
+    }
+
+    .special-defense {
+      background: $special-defense;
+    }
+
+    .defense {
+      background: $defense;
+    }
+
+    .special-attack {
+      background: $special-attack;
+    }
+
+    .attack {
+      background: $attack;
+    }
+  }
+
+  .progress__value--wrapper {
+    float: right;
+
+    .progress__value {
+      padding: 8px;
+    }
+  }
+}

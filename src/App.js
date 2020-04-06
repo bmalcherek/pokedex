@@ -13,8 +13,9 @@ function App() {
 
   return (
     <div className="app">
-      <PokemonTile url="https://pokeapi.co/api/v2/pokemon/1/" />
-      <PokemonTile url="https://pokeapi.co/api/v2/pokemon/2/" />
+      <PokemonTile url="https://pokeapi.co/api/v2/pokemon/292/" />
+      <PokemonTile url="https://pokeapi.co/api/v2/pokemon/646/" />
+      <PokemonTile url="https://pokeapi.co/api/v2/pokemon/333/" />
     </div>
   );
 }
