@@ -7,7 +7,7 @@ const Router = () => {
   return (
     <div className="content">
       <Switch>
-        <Route exact path="/" component={Pokedex} />
+        <Route path="*" component={Pokedex} />
       </Switch>
     </div>
   );

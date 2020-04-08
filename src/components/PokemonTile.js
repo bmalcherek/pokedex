@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import PokemonStats from "./PokemonStats";
 
@@ -30,6 +31,7 @@ const PokemonTile = (props) => {
 
   const img_src = loaded ? pokemon.sprites.front_default : null;
   const name = loaded ? pokemon.name.toUpperCase() : null;
+  const id = loaded ? pokemon.id : null;
 
   let types = null;
   if (loaded) {
@@ -48,7 +50,9 @@ const PokemonTile = (props) => {
             <img className="pokemon__image" src={img_src} alt="pokemon-front" />
           </div>
           <div className="pokemon__name--wrapper">
-            <h2 className="pokemon__name">{name}</h2>
+            <Link to={`/${id}`}>
+              <h2 className="pokemon__name">{name}</h2>
+            </Link>
           </div>
         </div>
 

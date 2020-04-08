@@ -2,8 +2,6 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
 import Router from "./routes";
-
-import Pokedex from "./components/Pokedex";
 import Navbar from "./components/Navbar";
 
 import "./scss/styles.scss";

@@ -1,5 +1,5 @@
 .pokemon--wrapper {
-  margin: 2rem;
+  margin: 4rem 3rem;
 
   border: solid 1px lightgray;
   border-radius: 2.5rem;
@@ -7,8 +7,15 @@
   .pokemon__header {
     display: flex;
     width: 100%;
+    border-radius: inherit;
 
     border-bottom: solid 0.1rem lightgray;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &:hover {
+      background-color: #eeeeee;
+    }
 
     .pokemon__image--wrapper {
       margin-left: 1.5rem;
