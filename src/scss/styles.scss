@@ -1,6 +1,7 @@
 @import "colors.scss";
 @import "progress.scss";
 @import "grid.scss";
+@import "pokemonTile.scss";
 
 html {
   font-size: 62.5%;
@@ -20,7 +21,6 @@ body {
   border-bottom: solid 0.3rem #222224;
 
   &__logo--wrapper {
-    // width: 100%;
     height: 100%;
     display: flex;
     flex-flow: row nowrap;
@@ -48,89 +48,4 @@ body {
     margin: 0 1.5rem;
   }
   margin: 5rem 10rem 0 10rem;
-}
-
-.pokemon--wrapper {
-  margin: 2rem;
-
-  border: solid 1px lightgray;
-  border-radius: 2.5rem;
-
-  .pokemon__header {
-    display: flex;
-    width: 100%;
-
-    border-bottom: solid 0.1rem lightgray;
-
-    .pokemon__image--wrapper {
-      margin-left: 1.5rem;
-      @media screen and (max-width: 900px) {
-        margin-left: 0;
-      }
-
-      float: left;
-      width: 96px;
-    }
-
-    .pokemon__name--wrapper {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .pokemon__name {
-        text-align: center;
-      }
-    }
-  }
-
-  .pokemon__types--wrapper {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    .pokemon__types--text--wrapper {
-      width: 100%;
-      text-align: center;
-    }
-
-    .pokemon__type {
-      padding: 0.3rem 1rem;
-      margin: 0 0.5rem;
-
-      border-radius: 1rem;
-    }
-  }
-
-  .pokemon__stats--wrapper {
-    width: 100%;
-    margin-bottom: 1rem;
-
-    .pokemon__stats__text--wrapper {
-      width: 100%;
-      text-align: center;
-    }
-
-    .pokemon__stats__base-stats {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-around;
-      margin-bottom: 1rem;
-
-      .weight {
-        padding-right: 0.5rem;
-      }
-
-      &__item {
-        display: flex;
-        align-items: stretch;
-      }
-
-      &__icon {
-        width: 1.8rem;
-        height: 100%;
-      }
-    }
-  }
 }
