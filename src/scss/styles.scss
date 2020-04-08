@@ -39,7 +39,7 @@ body {
   }
 }
 
-.app {
+.pokedex {
   display: flex;
   justify-content: flex-start;
   flex-flow: row wrap;
@@ -47,7 +47,7 @@ body {
   @media screen and (max-width: 900px) {
     margin: 0 1.5rem;
   }
-  margin: 0 10rem;
+  margin: 5rem 10rem 0 10rem;
 }
 
 .pokemon--wrapper {

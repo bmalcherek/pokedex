@@ -1,6 +1,5 @@
 import React from "react";
 
-import PokemonTile from "./components/PokemonTile";
 import Pokedex from "./components/Pokedex";
 
 import Pokeball from "./assets/pokeball.png";
@@ -18,24 +17,6 @@ function App() {
           </div>
         </div>
       </header>
-      {/* <div className="app">
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/1/" />
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/22/" />
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/35/" />
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/41/" />
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/49/" />
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/5/" />
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/51/" />
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/63/" />
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/69/" />
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/420/" />
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/9/" />
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/666/" />
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/29/" />
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/42/" />
-        <PokemonTile url="https://pokeapi.co/api/v2/pokemon/88/" />
-      </div> */}
-
       <Pokedex />
     </div>
   );

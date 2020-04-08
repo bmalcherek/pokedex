@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroller";
+import PokemonTile from "./PokemonTile";
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -11,7 +12,8 @@ const Pokedex = () => {
 
   useEffect(() => {
     const temp = newPokemons.map((pokemon) => (
-      <li style={{ height: "5rem" }}>{pokemon.name}</li>
+      <PokemonTile url={pokemon.url} />
+      //   <li style={{ height: "5rem" }}>{pokemon.name}</li>
     ));
     setPokedexItems([...pokedexItems, ...temp]);
   }, [newPokemons]);
@@ -40,7 +42,7 @@ const Pokedex = () => {
           </div>
         }
       >
-        <ul>{pokedexItems}</ul>
+        {pokedexItems}
       </InfiniteScroll>
     </div>
   );
