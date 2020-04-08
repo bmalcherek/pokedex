@@ -13,7 +13,6 @@ const PokemonTile = (props) => {
     axios.get(props.url).then((res) => {
       setPokemon(res.data);
       setLoaded(true);
-      console.log(res.data);
     });
   }, [props.url]);
 
@@ -46,9 +45,15 @@ const PokemonTile = (props) => {
     <div className="pokemon--container col-lg-3 col-md-6 col-sm-12">
       <div className="pokemon--wrapper">
         <div className="pokemon__header">
-          <div className="pokemon__image--wrapper">
-            <img className="pokemon__image" src={img_src} alt="pokemon-front" />
-          </div>
+          <Link to={`/${id}`}>
+            <div className="pokemon__image--wrapper">
+              <img
+                className="pokemon__image"
+                src={img_src}
+                alt="pokemon-front"
+              />
+            </div>
+          </Link>
           <div className="pokemon__name--wrapper">
             <Link to={`/${id}`}>
               <h2 className="pokemon__name">{name}</h2>

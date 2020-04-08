@@ -1,0 +1,59 @@
+.pokemon-detail--container {
+  display: flex;
+  justify-content: center;
+
+  .pokemon-detail--wrapper {
+    width: 70%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    .pokemon__name--wrapper {
+      text-align: center;
+      width: 100%;
+    }
+
+    .pokemon__sprite--container {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+      width: 100%;
+    }
+  }
+}
+
+.evolution-chain--wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+
+  .evolution-chain__title--wrapper {
+    width: 100%;
+    text-align: center;
+  }
+
+  .evolution-chain__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px black;
+    width: 13%;
+
+    .evolution-chain__item__name {
+      padding: 0 1rem;
+    }
+  }
+
+  .right-arrow--wrapper {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right-arrow {
+    height: 40%;
+    width: auto;
+  }
+}
