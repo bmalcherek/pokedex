@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import useFetch from "react-fetch-hook";
+import { Link } from "react-router-dom";
 
 import ArrowRight from "../assets/arrow-right-solid.svg";
 
@@ -35,7 +35,6 @@ const EvolutionChain = (props) => {
       axios.get(props.species.evolution_chain.url).then((res) => {
         setEvolutionChain(res.data);
         setLoadedEvolutionChain(true);
-        console.log("evolution_chain", res.data);
       });
     }
   }, [props.loaded]);
@@ -50,7 +49,6 @@ const EvolutionChain = (props) => {
             .then((res) => {
               setAncestor(res.data);
               setLoadedAncestor(true);
-              console.log("ancestor", res.data);
             });
         });
       }
@@ -65,13 +63,12 @@ const EvolutionChain = (props) => {
               .then((res) => {
                 setSuccessor(res.data);
                 setLoadedSuccessor(true);
-                console.log("successor", res.data);
               });
           });
         }
       }
     }
-  }, [loadedEvolutionChain]);
+  }, [loadedEvolutionChain, evolutionChain.chain]);
 
   const ancestorName = loadedAncestor ? ancestor.name.toUpperCase() : null;
   const ancestorSrc = loadedAncestor ? ancestor.sprites.front_default : null;
@@ -107,6 +104,7 @@ const EvolutionChain = (props) => {
 
   const ancestorJsx = loadedAncestor ? (
     <div className="ancestor--wrapper evolution-chain__item">
+      {/* <Link to={`/${ancestor.id}`} className="evolution-chain__item__link"> */}
       <div className="ancestor__image--wrapper">
         <img
           className="ancestor__image"
@@ -119,6 +117,7 @@ const EvolutionChain = (props) => {
           {ancestorName}
         </h4>
       </div>
+      {/* </Link> */}
     </div>
   ) : null;
 
@@ -142,7 +141,7 @@ const EvolutionChain = (props) => {
   return (
     <div className="evolution-chain--wrapper">
       <div className="evolution-chain__title--wrapper">
-        <h2 className="evolution-chain__title">Evolution Chain</h2>
+        <h3 className="evolution-chain__title">EVOLUTION CHAIN</h3>
       </div>
 
       {ancestorJsx}

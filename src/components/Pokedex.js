@@ -12,14 +12,16 @@ const Pokedex = () => {
 
   useEffect(() => {
     const temp = newPokemons.map((pokemon) => (
-      <PokemonTile url={pokemon.url} />
-      //   <li style={{ height: "5rem" }}>{pokemon.name}</li>
+      <PokemonTile url={pokemon.url} key={pokemon.name} />
     ));
     setPokedexItems([...pokedexItems, ...temp]);
   }, [newPokemons]);
 
+  useEffect(() => {
+    document.title = "Pokedex";
+  }, []);
+
   const handleLoadMore = (pageNum) => {
-    console.log(pageNum, url);
     setHasMore(false);
     axios.get(url).then((res) => {
       setPokemons([...pokemons, ...res.data.results]);

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 import PokemonStats from "./PokemonStats";
+import Types from "./Types";
 
 const PokemonTile = (props) => {
   const [pokemon, setPokemon] = useState({ loaded: false });
@@ -32,15 +33,6 @@ const PokemonTile = (props) => {
   const name = loaded ? pokemon.name.toUpperCase() : null;
   const id = loaded ? pokemon.id : null;
 
-  let types = null;
-  if (loaded) {
-    types = pokemon.types.map((type) => (
-      <span key={type.slot} className={`pokemon__type ${type.type.name}`}>
-        {type.type.name}
-      </span>
-    ));
-  }
-
   return (
     <div className="pokemon--container col-lg-3 col-md-6 col-sm-12">
       <div className="pokemon--wrapper">
@@ -61,12 +53,7 @@ const PokemonTile = (props) => {
           </div>
         </div>
 
-        <div className="pokemon__types--wrapper">
-          <div className="pokemon__types--text--wrapper">
-            <h3 className="pokemon__types--text">Types</h3>
-          </div>
-          <div className="pokemon__types">{types}</div>
-        </div>
+        <Types loaded={loaded} types={pokemon.types} />
 
         <PokemonStats stats={stats} />
       </div>

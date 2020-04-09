@@ -31,7 +31,7 @@ const PokemonStats = (props) => {
   return (
     <div className="pokemon__stats--wrapper">
       <div className="pokemon__stats__text--wrapper">
-        <h3 className="pokemon__stats__text">Stats</h3>
+        <h3 className="pokemon__stats__text">STATS</h3>
       </div>
       <div className="pokemon__stats__base-stats">
         <span>{baseXp} XP </span>
