@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import ArrowRight from "../assets/arrow-right-solid.svg";
+import ArrowDown from "../assets/arrow-down-solid.svg";
 
 const EvolutionChain = (props) => {
   const [evolutionChain, setEvolutionChain] = useState({});
@@ -76,12 +76,21 @@ const EvolutionChain = (props) => {
   const ancestorName = loadedAncestor ? ancestor.name.toUpperCase() : null;
   const ancestorSrc = loadedAncestor ? ancestor.sprites.front_default : null;
   const ancestorArrow = loadedAncestor ? (
-    <div className="ancestor__arrow--wrapper right-arrow--wrapper">
-      <img
-        src={ArrowRight}
-        alt="arrow-right"
-        className="ancestor__arrow right-arrow"
-      />
+    <div className="evolution-chain__arrow col-lg-2 col-md-12 col-sm-12">
+      <div className="evolution-chain__arrow__right--wrapper">
+        <img
+          src={ArrowRight}
+          alt="right"
+          className="evolution-chain__arrow__right"
+        />
+      </div>
+      <div className="evolution-chain__arrow__down--wrapper">
+        <img
+          src={ArrowDown}
+          alt="down"
+          className="evolution-chain__arrow__down"
+        />
+      </div>
     </div>
   ) : null;
 
@@ -95,45 +104,50 @@ const EvolutionChain = (props) => {
   const successorName = loadedSuccessor ? successor.name.toUpperCase() : null;
   const successorSrc = loadedSuccessor ? successor.sprites.front_default : null;
   const successorArrow = loadedSuccessor ? (
-    <div className="successor__arrow--wrapper right-arrow--wrapper">
-      <img
-        src={ArrowRight}
-        alt="right-arrow"
-        className="successor__arrow right-arrow"
-      />
+    <div className="evolution-chain__arrow col-lg-2 col-md-12 col-sm-12">
+      <div className="evolution-chain__arrow__right--wrapper">
+        <img
+          src={ArrowRight}
+          alt="right"
+          className="evolution-chain__arrow__right"
+        />
+      </div>
+      <div className="evolution-chain__arrow__down--wrapper">
+        <img
+          src={ArrowDown}
+          alt="down"
+          className="evolution-chain__arrow__down"
+        />
+      </div>
     </div>
   ) : null;
 
   const ancestorJsx = loadedAncestor ? (
-    <div className="ancestor--wrapper evolution-chain__item">
-      <div className="ancestor__image--wrapper">
+    <div className="evolution-chain__item col-lg-2 col-md-12 col-sm-12">
+      <div className="evolution-chain__item__image--wrapper">
         <img
-          className="ancestor__image"
           src={ancestorSrc}
-          alt="ancestor_image"
+          alt="ancestor"
+          className="evolution-chain__item__image"
         />
       </div>
-      <div className="ancestor__name--wrapper">
-        <h4 className="ancestor__name evolution-chain__item__name">
-          {ancestorName}
-        </h4>
+      <div className="evolution-chain__item__name--wrapper">
+        <h4 className="evolution-chain__item__name">{ancestorName}</h4>
       </div>
     </div>
   ) : null;
 
   const successorJsx = loadedSuccessor ? (
-    <div className="successor--wrapper evolution-chain__item">
-      <div className="successor__image--wrapper">
+    <div className="evolution-chain__item col-lg-2 col-md-12 col-sm-12">
+      <div className="evolution-chain__item__image--wrapper">
         <img
-          className="successor__image"
           src={successorSrc}
-          alt="successor_image"
+          alt="successor"
+          className="evolution-chain__item__image"
         />
       </div>
-      <div className="successor__name--wrapper">
-        <h4 className="successor__name evolution-chain__item__name">
-          {successorName}
-        </h4>
+      <div className="evolution-chain__item__name--wrapper">
+        <h4 className="evolution-chain__item__name">{successorName}</h4>
       </div>
     </div>
   ) : null;
@@ -143,29 +157,26 @@ const EvolutionChain = (props) => {
       <div className="evolution-chain__title--wrapper">
         <h3 className="evolution-chain__title">EVOLUTION CHAIN</h3>
       </div>
+      <div className="evolution-chain__item--container">
+        {ancestorJsx}
+        {ancestorArrow}
 
-      {ancestorJsx}
-
-      {ancestorArrow}
-
-      <div className="current-pokemon--wrapper evolution-chain__item">
-        <div className="current-pokemon__image--wrapper">
-          <img
-            className="current-pokemon__image"
-            src={curPokemonSrc}
-            alt="current-pokemon_image"
-          />
+        <div className="evolution-chain__item col-lg-2 col-md-12 col-sm-12">
+          <div className="evolution-chain__item__image--wrapper">
+            <img
+              src={curPokemonSrc}
+              alt="current"
+              className="evolution-chain__item__image"
+            />
+          </div>
+          <div className="evolution-chain__item__name--wrapper">
+            <h4 className="evolution-chain__item__name">{curPokemonName}</h4>
+          </div>
         </div>
-        <div className="current-pokemon__name--wrapper">
-          <h4 className="current-pokemon__name evolution-chain__item__name">
-            {curPokemonName}
-          </h4>
-        </div>
+
+        {successorArrow}
+        {successorJsx}
       </div>
-
-      {successorArrow}
-
-      {successorJsx}
     </div>
   );
 };

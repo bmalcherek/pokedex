@@ -2,10 +2,17 @@
   display: flex;
   justify-content: center;
   background-color: #f6f6f6;
-  padding: 7rem;
 
   .pokemon-detail--wrapper {
-    width: 65%;
+    @media screen and (max-width: 1000px) {
+      width: 90%;
+    }
+    @media screen and (max-width: 1300px) and (min-width: 1001px) {
+      width: 80%;
+    }
+    @media screen and (min-width: 1301px) {
+      width: 65%;
+    }
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -17,6 +24,8 @@
     .pokemon-detail__header--wrapper {
       width: 100%;
       display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
       border-bottom: 1px lightgray solid;
 
       .pokemon__deafult-sprite--wrapper {
@@ -35,7 +44,13 @@
 
     .pokemon__name--wrapper {
       text-align: center;
-      width: 100%;
+      width: 80%;
+      @media screen and (max-width: 800px) {
+        width: 100%;
+      }
+      @media screen and (min-width: 1450px) {
+        width: 90%;
+      }
       padding: 2rem 0;
       display: flex;
       justify-content: center;
@@ -46,7 +61,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100%;
+      float: right;
+      @media screen and (max-width: 800px) {
+        padding-right: 0;
+        .pokemon__id {
+          margin-top: -3rem;
+        }
+      }
       padding-right: 5rem;
       color: #444;
     }
@@ -102,34 +123,50 @@
     text-align: center;
   }
 
-  .evolution-chain__item {
+  .evolution-chain__item--container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 13%;
-
-    &__name {
-      padding: 0 1rem;
-    }
-
-    // &__link {
-    //   display: flex;
-    //   width: 100%;
-    //   flex-direction: column;
-    //   align-items: center;
-    // }
-  }
-
-  .right-arrow--wrapper {
-    width: 10%;
-    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
     justify-content: center;
     align-items: center;
   }
 
-  .right-arrow {
-    height: 30%;
-    width: auto;
+  .evolution-chain__item {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+
+    &__name {
+      margin-top: 1rem;
+    }
+  }
+
+  .evolution-chain__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__right--wrapper {
+      height: 30%;
+      width: auto;
+      @media screen and (max-width: 1023px) {
+        display: none;
+      }
+    }
+
+    &__down--wrapper {
+      height: 30%;
+      width: auto;
+      @media screen and (min-width: 1024px) {
+        display: none;
+      }
+    }
+
+    &__right,
+    &__down {
+      width: 4rem;
+    }
   }
 }
 
@@ -137,11 +174,17 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  margin-top: 1.8rem;
+  margin-top: -4rem;
+  @media screen and (max-width: 800px) {
+    margin-top: 0;
+  }
 
   .pokemon__sprite {
     &__title--wrapper {
       margin-bottom: 4rem;
+      @media screen and (max-width: 800px) {
+        margin-bottom: 0;
+      }
     }
 
     &__pair {

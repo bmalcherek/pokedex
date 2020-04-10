@@ -28,6 +28,10 @@ a {
   height: 10rem;
   width: 100%;
   border-bottom: solid 0.3rem #222224;
+  margin-bottom: 7rem;
+  @media screen and (max-width: 1000px) {
+    margin-bottom: 4rem;
+  }
 
   &__logo--wrapper {
     height: 100%;
@@ -48,13 +52,22 @@ a {
   }
 }
 
+.pokedex--container {
+  display: flex;
+  justify-content: center;
+}
 .pokedex {
   display: flex;
   justify-content: flex-start;
   flex-flow: row wrap;
 
-  @media screen and (max-width: 1080px) {
-    margin: 0 1.5rem;
+  @media screen and (max-width: 1000px) {
+    width: 96%;
   }
-  margin: 5rem 15rem 0 15rem;
+  @media screen and (max-width: 1300px) and (min-width: 1001px) {
+    width: 83%;
+  }
+  @media screen and (min-width: 1301px) {
+    width: 77%;
+  }
 }

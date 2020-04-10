@@ -108,7 +108,6 @@ const PokemonDetail = () => {
           <div className="info-column--wrapper col-lg-6 col-md-12 col-sm-12">
             <div className="info-column">
               <div className="pokemon-detail__stats--wrapper">
-                <Types loaded={loadedPokemon} types={pokemon.types} />
                 <div className="pokemon__other-info--container">
                   <div className="pokemon__habitat--wrapper">
                     <div className="pokemon__habitat__title--wrapper">
@@ -145,6 +144,7 @@ const PokemonDetail = () => {
                     </div>
                   </div>
                 </div>
+                <Types loaded={loadedPokemon} types={pokemon.types} />
                 <PokemonStats stats={stats} />
               </div>
             </div>
