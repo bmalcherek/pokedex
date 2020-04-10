@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import ArrowRight from "../assets/arrow-right-solid.svg";
 
@@ -11,6 +12,8 @@ const EvolutionChain = (props) => {
   const [loadedEvolutionChain, setLoadedEvolutionChain] = useState(false);
   const [loadedAncestor, setLoadedAncestor] = useState(false);
   const [loadedSuccessor, setLoadedSuccessor] = useState(false);
+
+  const { pokemonId } = useParams();
 
   const findSuccessorUrl = (chain) => {
     let next = false;
@@ -68,7 +71,7 @@ const EvolutionChain = (props) => {
         }
       }
     }
-  }, [loadedEvolutionChain, evolutionChain.chain]);
+  }, [loadedEvolutionChain, evolutionChain.chain, pokemonId]);
 
   const ancestorName = loadedAncestor ? ancestor.name.toUpperCase() : null;
   const ancestorSrc = loadedAncestor ? ancestor.sprites.front_default : null;
@@ -89,7 +92,6 @@ const EvolutionChain = (props) => {
     ? props.pokemon.name.toUpperCase()
     : null;
 
-  // console.log(loadedSuccessor, successor);
   const successorName = loadedSuccessor ? successor.name.toUpperCase() : null;
   const successorSrc = loadedSuccessor ? successor.sprites.front_default : null;
   const successorArrow = loadedSuccessor ? (
@@ -104,7 +106,6 @@ const EvolutionChain = (props) => {
 
   const ancestorJsx = loadedAncestor ? (
     <div className="ancestor--wrapper evolution-chain__item">
-      {/* <Link to={`/${ancestor.id}`} className="evolution-chain__item__link"> */}
       <div className="ancestor__image--wrapper">
         <img
           className="ancestor__image"
@@ -117,7 +118,6 @@ const EvolutionChain = (props) => {
           {ancestorName}
         </h4>
       </div>
-      {/* </Link> */}
     </div>
   ) : null;
 

@@ -22,7 +22,7 @@ const PokemonDetail = () => {
       setLoadedPokemon(true);
       document.title =
         res.data.name.charAt(0).toUpperCase() + res.data.name.substring(1);
-      console.log("pokemon", res.data);
+      // console.log("pokemon", res.data);
     });
   }, [pokemonId]);
 
@@ -34,7 +34,7 @@ const PokemonDetail = () => {
         console.log("species", res.data);
       });
     }
-  }, [loadedPokemon]);
+  }, [loadedPokemon, pokemonId]);
 
   useEffect(() => {
     if (loadedPokemon) {
@@ -57,12 +57,41 @@ const PokemonDetail = () => {
     ? species.shape.name.charAt(0).toUpperCase() +
       species.shape.name.substring(1)
     : null;
+  const color = loadedSpecies
+    ? species.color.name.charAt(0).toUpperCase() +
+      species.color.name.substring(1)
+    : null;
+  const generation = loadedSpecies
+    ? species.generation.name.charAt(0).toUpperCase() +
+      species.generation.name.substring(1, 11) +
+      species.generation.name.substring(11).toUpperCase()
+    : null;
+
+  const defaultSprite = loadedPokemon ? (
+    <div className="pokemon__deafult-sprite--wrapper">
+      <img
+        className="pokemon__defalut--sprite"
+        src={pokemon.sprites.front_default}
+        alt="front"
+      />
+    </div>
+  ) : null;
+
+  const id = loadedPokemon ? (
+    <div className="pokemon__id--wrapper">
+      <h1 className="pokemon__id">#{pokemon.id}</h1>
+    </div>
+  ) : null;
 
   return (
     <div className="pokemon-detail--container">
       <div className="pokemon-detail--wrapper">
-        <div className="pokemon__name--wrapper">
-          <h1 className="pokemon__name">{name}</h1>
+        <div className="pokemon-detail__header--wrapper">
+          <div className="pokemon__name--wrapper">
+            {defaultSprite}
+            <h1 className="pokemon__name">{name}</h1>
+          </div>
+          {id}
         </div>
         <div className="column--container">
           <div className="content-column--wrapper col-lg-6 col-md-12 col-sm-12">
@@ -80,8 +109,7 @@ const PokemonDetail = () => {
             <div className="info-column">
               <div className="pokemon-detail__stats--wrapper">
                 <Types loaded={loadedPokemon} types={pokemon.types} />
-                <PokemonStats stats={stats} />
-                <div className="pokemon__habitat-shape--wrapper">
+                <div className="pokemon__other-info--container">
                   <div className="pokemon__habitat--wrapper">
                     <div className="pokemon__habitat__title--wrapper">
                       <h4 className="pokemon__habitat__title">HABITAT</h4>
@@ -98,7 +126,26 @@ const PokemonDetail = () => {
                       <span className="pokemon__shape__name">{shape}</span>
                     </div>
                   </div>
+                  <div className="pokemon__color--wrapper">
+                    <div className="pokemon__color__title--wrapper">
+                      <h4 className="pokemon__color__title">COLOR</h4>
+                    </div>
+                    <div className="pokemon__color__name--wrapper">
+                      <span className="pokemon__color__name">{color}</span>
+                    </div>
+                  </div>
+                  <div className="pokemon__generation--wrapper">
+                    <div className="pokemon__generation__title--wrapper">
+                      <h4 className="pokemon__generation__title">GENERATION</h4>
+                    </div>
+                    <div className="pokemon__generation__name--wrapper">
+                      <span className="pokemon__generation__name">
+                        {generation}
+                      </span>
+                    </div>
+                  </div>
                 </div>
+                <PokemonStats stats={stats} />
               </div>
             </div>
           </div>
