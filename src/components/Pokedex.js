@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroller";
-import { intersectionBy, intersectionWith } from "lodash";
+import { intersectionWith } from "lodash";
 
 import PokemonTile from "./PokemonTile";
 import Filters from "./Filters";
+
+const PAGE_SIZE = 20;
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -17,22 +19,21 @@ const Pokedex = () => {
   const [filteredPokemons, setFilteredPokemons] = useState([]);
   const [typeFilter, setTypeFilter] = useState([]);
   const [typeFilterItems, setTypeFilterItems] = useState([]);
+  const [filteredPageNum, setFilteredPageNum] = useState(0);
 
   useEffect(() => {
+    let temp;
     if (isFiltered) {
-      console.log("filtered", filteredPokemons);
-      setPokedexItems(
-        filteredPokemons.map((pokemon) => (
-          <PokemonTile url={pokemon.pokemon.url} key={pokemon.pokemon.name} />
-        ))
-      );
+      temp = newPokemons.map((pokemon) => (
+        <PokemonTile url={pokemon.pokemon.url} key={pokemon.pokemon.name} />
+      ));
     } else {
-      const temp = newPokemons.map((pokemon) => (
+      temp = newPokemons.map((pokemon) => (
         <PokemonTile url={pokemon.url} key={pokemon.name} />
       ));
-      setPokedexItems([...pokedexItems, ...temp]);
     }
-  }, [newPokemons, filteredPokemons]);
+    setPokedexItems([...pokedexItems, ...temp]);
+  }, [newPokemons]);
 
   useEffect(() => {
     document.title = "Pokedex";
@@ -45,20 +46,10 @@ const Pokedex = () => {
       setIsFiltered(true);
     } else {
       setIsFiltered(false);
+      setPokedexItems([]);
+      setUrl("https://pokeapi.co/api/v2/pokemon/");
     }
-  }, [typeFilter]);
-
-  //END FILTERS
-
-  const handleLoadMore = (pageNum) => {
-    setHasMore(false);
-    axios.get(url).then((res) => {
-      setPokemons([...pokemons, ...res.data.results]);
-      setNewPokemons(res.data.results);
-      setUrl(res.data.next);
-      setHasMore(res.data.next ? true : false);
-    });
-  };
+  }, [typeFilter, isFiltered]);
 
   useEffect(() => {
     let result = [];
@@ -72,8 +63,40 @@ const Pokedex = () => {
         );
       }
       setFilteredPokemons(result);
+      setPokedexItems([]);
+      setHasMore(true);
+      setFilteredPageNum(0);
     }
   }, [typeFilterItems]);
+
+  //END FILTERS
+
+  const handleLoadMore = (pageNum) => {
+    setHasMore(false);
+    if (isFiltered) {
+      const sliceBegin = filteredPageNum * PAGE_SIZE;
+      const sliceEnd =
+        filteredPokemons.length > sliceBegin + PAGE_SIZE
+          ? sliceBegin + PAGE_SIZE
+          : filteredPokemons.length;
+
+      setFilteredPageNum(filteredPageNum + 1);
+
+      setNewPokemons(filteredPokemons.slice(sliceBegin, sliceEnd));
+      if (filteredPokemons.length > sliceBegin + PAGE_SIZE) {
+        setHasMore(true);
+      } else {
+        setHasMore(false);
+      }
+    } else {
+      axios.get(url).then((res) => {
+        setPokemons([...pokemons, ...res.data.results]);
+        setNewPokemons(res.data.results);
+        setUrl(res.data.next);
+        setHasMore(res.data.next ? true : false);
+      });
+    }
+  };
 
   const filters = {
     type: {
@@ -84,7 +107,7 @@ const Pokedex = () => {
     },
   };
 
-  console.log(typeFilter, typeFilterItems, isFiltered);
+  // console.log(typeFilter, typeFilterItems, isFiltered);
 
   return (
     <div className="pokedex--container">

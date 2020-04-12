@@ -54,7 +54,7 @@ const Filters = (props) => {
                       temp.push(res.data.pokemon);
                     });
                     props.filters.type.setItems(temp);
-                    console.log("temp", temp);
+                    // console.log("temp", temp);
                   });
                   props.filters.type.setType(event);
                 } else {
