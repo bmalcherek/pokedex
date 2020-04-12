@@ -43,7 +43,7 @@ const PokemonTile = (props) => {
   }
 
   return (
-    <div className="pokemon-tile--container col-lg-2 col-md-4 col-sm-6">
+    <div className="pokemon-tile--container col-lg-3 col-md-4 col-sm-6">
       <div className="pokemon-tile--wrapper">
         <div className="pokemon-tile__img--wrapper">
           <Link className="pokemon-tile__link" to={`/${id}`}>
@@ -61,26 +61,6 @@ const PokemonTile = (props) => {
           </div>
           <div className="pokemon-tile__type--wrapper">{types}</div>
         </div>
-        {/* <div className="pokemon__header">
-          <Link to={`/${id}`}>
-            <div className="pokemon__image--wrapper">
-              <img
-                className="pokemon__image"
-                src={img_src}
-                alt="pokemon-front"
-              />
-            </div>
-          </Link>
-          <div className="pokemon__name--wrapper">
-            <Link to={`/${id}`}>
-              <h2 className="pokemon__name">{name}</h2>
-            </Link>
-          </div>
-        </div>
-
-        
-
-        <PokemonStats stats={stats} /> */}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-$img-scale: 2;
+$img-scale: 1.9;
 
 .pokemon-tile {
   &--wrapper {
@@ -8,6 +8,7 @@ $img-scale: 2;
       margin: 2rem 1.2rem;
     }
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 3rem;
 
     display: flex;
     flex-flow: column wrap;
@@ -41,6 +42,8 @@ $img-scale: 2;
     background-color: #ef9a9a;
     border-top: 0.3rem solid #222224;
     display: flex;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
   }
 
   &__info--wrapper {

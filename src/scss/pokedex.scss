@@ -1,0 +1,20 @@
+.pokedex__item--container {
+  display: flex;
+  width: 75%;
+}
+.pokedex--container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.pokedex--wrapper {
+  width: 79%;
+  display: flex;
+}
+.pokedex {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  width: 100%;
+}

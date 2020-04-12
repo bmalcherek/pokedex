@@ -5,6 +5,8 @@
 @import "pokemonDetail.scss";
 @import "types.scss";
 @import "stats.scss";
+@import "filters.scss";
+@import "pokedex.scss";
 
 html {
   font-size: 62.5%;
@@ -50,25 +52,5 @@ a {
   &__name {
     padding-left: 2rem;
     color: #222224;
-  }
-}
-
-.pokedex--container {
-  display: flex;
-  justify-content: center;
-}
-.pokedex {
-  display: flex;
-  justify-content: flex-start;
-  flex-flow: row wrap;
-
-  @media screen and (max-width: 1000px) {
-    width: 96%;
-  }
-  @media screen and (max-width: 1300px) and (min-width: 1001px) {
-    width: 83%;
-  }
-  @media screen and (min-width: 1301px) {
-    width: 77%;
   }
 }
