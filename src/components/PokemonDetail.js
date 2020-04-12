@@ -22,7 +22,7 @@ const PokemonDetail = () => {
       setLoadedPokemon(true);
       document.title =
         res.data.name.charAt(0).toUpperCase() + res.data.name.substring(1);
-      // console.log("pokemon", res.data);
+      console.log("pokemon", res.data);
     });
   }, [pokemonId]);
 
@@ -50,8 +50,10 @@ const PokemonDetail = () => {
 
   const name = loadedPokemon ? pokemon.name.toUpperCase() : null;
   const habitat = loadedSpecies
-    ? species.habitat.name.charAt(0).toUpperCase() +
-      species.habitat.name.substring(1)
+    ? species.habitat
+      ? species.habitat.name.charAt(0).toUpperCase() +
+        species.habitat.name.substring(1)
+      : "Unknown"
     : null;
   const shape = loadedSpecies
     ? species.shape.name.charAt(0).toUpperCase() +
