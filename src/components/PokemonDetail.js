@@ -7,6 +7,8 @@ import Sprites from "./Sprites";
 import PokemonStats from "./PokemonStats";
 import Types from "./Types";
 
+import NoSprite from "../assets/question-solid.svg";
+
 const PokemonDetail = () => {
   const [pokemon, setPokemon] = useState({});
   const [species, setSpecies] = useState({});
@@ -70,12 +72,20 @@ const PokemonDetail = () => {
     : null;
 
   const defaultSprite = loadedPokemon ? (
-    <div className="pokemon__deafult-sprite--wrapper">
-      <img
-        className="pokemon__defalut--sprite"
-        src={pokemon.sprites.front_default}
-        alt="front"
-      />
+    <div className="pokemon__deafult__sprite--wrapper">
+      {pokemon.sprites.front_default ? (
+        <img
+          className="pokemon__default__sprite"
+          src={pokemon.sprites.front_default}
+          alt="front"
+        />
+      ) : (
+        <img
+          className="pokemon__default__no-sprite"
+          src={NoSprite}
+          alt="front"
+        />
+      )}
     </div>
   ) : null;
 

@@ -1,5 +1,7 @@
 import React from "react";
 
+import NoSprite from "../assets/question-solid.svg";
+
 const Sprites = (props) => {
   const SPRITES_ORDER = [
     "front_default",
@@ -20,13 +22,15 @@ const Sprites = (props) => {
     const multipleGenders = props.species.has_gender_differences;
     const countTo = multipleGenders ? 8 : 4;
     for (let i = 0; i < countTo; i++) {
-      if (props.pokemon.sprites[SPRITES_ORDER[i]]) {
-        pair.push(
-          <div key={SPRITES_ORDER[i]} className="pokemon__sprites__item">
+      pair.push(
+        <div key={SPRITES_ORDER[i]} className="pokemon__sprites__item">
+          {props.pokemon.sprites[SPRITES_ORDER[i]] ? (
             <img src={props.pokemon.sprites[SPRITES_ORDER[i]]} alt="sprite" />
-          </div>
-        );
-      }
+          ) : (
+            <img src={NoSprite} alt="no-sprite" className="no-sprite" />
+          )}
+        </div>
+      );
       if (i % 2 === 1) {
         sprites.push(
           <div key={Math.floor(i / 2)} className="pokemon__sprite__pair">

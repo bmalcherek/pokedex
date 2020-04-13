@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 import ArrowRight from "../assets/arrow-right-solid.svg";
 import ArrowDown from "../assets/arrow-down-solid.svg";
+import NoSprite from "../assets/question-solid.svg";
 
 const EvolutionChain = (props) => {
   const [evolutionChain, setEvolutionChain] = useState({});
@@ -74,7 +75,22 @@ const EvolutionChain = (props) => {
   }, [loadedEvolutionChain, evolutionChain.chain, pokemonId]);
 
   const ancestorName = loadedAncestor ? ancestor.name.toUpperCase() : null;
-  const ancestorSrc = loadedAncestor ? ancestor.sprites.front_default : null;
+  const ancestorImg = loadedAncestor ? (
+    ancestor.sprites.front_default ? (
+      <img
+        src={ancestor.sprites.front_default}
+        alt="right"
+        className="evolution-chain__item__image"
+      />
+    ) : (
+      <img
+        src={NoSprite}
+        alt="right"
+        className="evolution-chain__item__no-sprite"
+      />
+    )
+  ) : null;
+
   const ancestorArrow = loadedAncestor ? (
     <div className="evolution-chain__arrow col-lg-2 col-md-12 col-sm-12">
       <div className="evolution-chain__arrow__right--wrapper">
@@ -94,15 +110,45 @@ const EvolutionChain = (props) => {
     </div>
   ) : null;
 
-  const curPokemonSrc = loadedEvolutionChain
-    ? props.pokemon.sprites.front_default
-    : null;
+  const curPokemonImg = loadedEvolutionChain ? (
+    props.pokemon.sprites.front_default ? (
+      <img
+        src={props.pokemon.sprites.front_default}
+        alt="curr-img"
+        className="evolution-chain__item__image"
+      />
+    ) : (
+      <img
+        src={NoSprite}
+        alt="no-sprite"
+        className="evolution-chain__item__no-sprite"
+      />
+    )
+  ) : null;
   const curPokemonName = loadedEvolutionChain
     ? props.pokemon.name.toUpperCase()
     : null;
 
+  if (loadedSuccessor) {
+    console.log(successor.sprites.front_default);
+  }
+
   const successorName = loadedSuccessor ? successor.name.toUpperCase() : null;
-  const successorSrc = loadedSuccessor ? successor.sprites.front_default : null;
+  const successorImg = loadedSuccessor ? (
+    successor.sprites.front_default ? (
+      <img
+        src={successor.sprites.front_default}
+        alt="successor-img"
+        className="evolution-chain__item__image"
+      />
+    ) : (
+      <img
+        src={NoSprite}
+        alt="no-sprite"
+        className="evolution-chain__item__no-sprite"
+      />
+    )
+  ) : null;
   const successorArrow = loadedSuccessor ? (
     <div className="evolution-chain__arrow col-xl-2 col-lg-2 col-md-12 col-sm-12">
       <div className="evolution-chain__arrow__right--wrapper">
@@ -124,13 +170,7 @@ const EvolutionChain = (props) => {
 
   const ancestorJsx = loadedAncestor ? (
     <div className="evolution-chain__item col-xl-2 col-lg-2 col-md-12 col-sm-12">
-      <div className="evolution-chain__item__image--wrapper">
-        <img
-          src={ancestorSrc}
-          alt="ancestor"
-          className="evolution-chain__item__image"
-        />
-      </div>
+      <div className="evolution-chain__item__image--wrapper">{ancestorImg}</div>
       <div className="evolution-chain__item__name--wrapper">
         <h4 className="evolution-chain__item__name">{ancestorName}</h4>
       </div>
@@ -140,11 +180,7 @@ const EvolutionChain = (props) => {
   const successorJsx = loadedSuccessor ? (
     <div className="evolution-chain__item col-xl-2 col-lg-2 col-md-12 col-sm-12">
       <div className="evolution-chain__item__image--wrapper">
-        <img
-          src={successorSrc}
-          alt="successor"
-          className="evolution-chain__item__image"
-        />
+        {successorImg}
       </div>
       <div className="evolution-chain__item__name--wrapper">
         <h4 className="evolution-chain__item__name">{successorName}</h4>
@@ -163,11 +199,7 @@ const EvolutionChain = (props) => {
 
         <div className="evolution-chain__item col-xl-2 col-lg-2 col-md-12 col-sm-12">
           <div className="evolution-chain__item__image--wrapper">
-            <img
-              src={curPokemonSrc}
-              alt="current"
-              className="evolution-chain__item__image"
-            />
+            {curPokemonImg}
           </div>
           <div className="evolution-chain__item__name--wrapper">
             <h4 className="evolution-chain__item__name">{curPokemonName}</h4>

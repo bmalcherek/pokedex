@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import NoSprite from "../assets/question-solid.svg";
+
 const PokemonTile = (props) => {
   const [pokemon, setPokemon] = useState({ loaded: false });
   const [loaded, setLoaded] = useState(false);
@@ -13,7 +15,17 @@ const PokemonTile = (props) => {
     });
   }, [props.url]);
 
-  const imgSrc = loaded ? pokemon.sprites.front_default : null;
+  const img = loaded ? (
+    pokemon.sprites.front_default ? (
+      <img
+        className="pokemon-tile__img"
+        src={pokemon.sprites.front_default}
+        alt="pokemon-img"
+      />
+    ) : (
+      <img className="pokemon-tile__no-sprite" src={NoSprite} alt="no-sprite" />
+    )
+  ) : null;
   const name = loaded ? pokemon.name.toUpperCase() : null;
   const id = loaded ? pokemon.id : null;
 
@@ -31,7 +43,7 @@ const PokemonTile = (props) => {
       <div className="pokemon-tile--wrapper">
         <div className="pokemon-tile__img--wrapper">
           <Link className="pokemon-tile__link" to={`/${id}`}>
-            <img className="pokemon-tile__img" src={imgSrc} alt="pokemon-img" />
+            {img}
           </Link>
         </div>
         <div className="pokemon-tile__info--wrapper">
