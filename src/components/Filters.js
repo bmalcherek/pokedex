@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 
 import NameFilter from "./Autocomplete";
 
+import CloseIcon from "../assets/times-solid.svg";
+
 const Filters = (props) => {
   const [types, setTypes] = useState([]);
 
@@ -37,10 +39,6 @@ const Filters = (props) => {
       ...provided,
       height: "5.2rem",
     }),
-    placeholder: (provided, state) => ({
-      ...provided,
-      paddingLeft: "1rem",
-    }),
     control: (provided, state) => ({
       ...provided,
       border: "1px solid #aaa",
@@ -48,8 +46,16 @@ const Filters = (props) => {
   };
 
   return (
-    <div className="filters--container">
+    <div className={`${props.show ? "show--container" : "filters--container"}`}>
       <div className="filters--wrapper">
+        <div className="close-btn--wrapper">
+          <img
+            src={CloseIcon}
+            alt="close-icon"
+            className="close-btn"
+            onClick={() => props.closeFilters(false)}
+          />
+        </div>
         <div className="filters__title--wrapper">
           <h2 className="filters__title">FILTERS</h2>
         </div>
@@ -57,7 +63,9 @@ const Filters = (props) => {
           <div className="filters__name__title--wrapper">
             <span className="filters__name__title">NAME FILTER</span>
           </div>
-          <NameFilter history={history} />
+          <div className="filters__name__input--wrapper">
+            <NameFilter history={history} />
+          </div>
         </div>
         <div className="filters__type--wrapper">
           <div className="filters__type__title--wrapper">

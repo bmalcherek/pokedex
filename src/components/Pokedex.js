@@ -20,6 +20,7 @@ const Pokedex = () => {
   const [typeFilter, setTypeFilter] = useState([]);
   const [typeFilterItems, setTypeFilterItems] = useState([]);
   const [filteredPageNum, setFilteredPageNum] = useState(0);
+  const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
     let temp;
@@ -112,8 +113,19 @@ const Pokedex = () => {
   return (
     <div className="pokedex--container">
       <div className="pokedex--wrapper">
-        <Filters filters={filters} />
-        <div className="pokedex__item--container">
+        <Filters
+          filters={filters}
+          show={showFilters}
+          closeFilters={setShowFilters}
+        />
+        <div
+          className={`pokedex__item--container ${showFilters ? "hide" : null}`}
+        >
+          <div className="show-filters-btn--wrapper">
+            <button id="show-filters-btn" onClick={() => setShowFilters(true)}>
+              Show Filters
+            </button>
+          </div>
           <InfiniteScroll
             className="pokedex"
             loadMore={handleLoadMore}

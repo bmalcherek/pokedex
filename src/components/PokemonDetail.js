@@ -22,7 +22,7 @@ const PokemonDetail = () => {
       setLoadedPokemon(true);
       document.title =
         res.data.name.charAt(0).toUpperCase() + res.data.name.substring(1);
-      console.log("pokemon", res.data);
+      // console.log("pokemon", res.data);
     });
   }, [pokemonId]);
 
@@ -31,7 +31,7 @@ const PokemonDetail = () => {
       axios.get(pokemon.species.url).then((res) => {
         setSpecies(res.data);
         setLoadedSpecies(true);
-        console.log("species", res.data);
+        // console.log("species", res.data);
       });
     }
   }, [loadedPokemon, pokemonId]);
@@ -96,7 +96,7 @@ const PokemonDetail = () => {
           {id}
         </div>
         <div className="column--container">
-          <div className="content-column--wrapper col-lg-6 col-md-12 col-sm-12">
+          <div className="content-column--wrapper col-xl-6 col-lg-6 col-md-12 col-sm-12">
             <div className="content-column">
               <div className="pokemon__sprite--container">
                 <Sprites
@@ -107,7 +107,7 @@ const PokemonDetail = () => {
               </div>
             </div>
           </div>
-          <div className="info-column--wrapper col-lg-6 col-md-12 col-sm-12">
+          <div className="info-column--wrapper col-xl-6 col-lg-6 col-md-12 col-sm-12">
             <div className="info-column">
               <div className="pokemon-detail__stats--wrapper">
                 <div className="pokemon__other-info--container">

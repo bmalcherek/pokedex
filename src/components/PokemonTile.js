@@ -27,7 +27,7 @@ const PokemonTile = (props) => {
   }
 
   return (
-    <div className="pokemon-tile--container col-lg-3 col-md-4 col-sm-6">
+    <div className="pokemon-tile--container col-xl-3 col-lg-4 col-md-6 col-sm-12">
       <div className="pokemon-tile--wrapper">
         <div className="pokemon-tile__img--wrapper">
           <Link className="pokemon-tile__link" to={`/${id}`}>

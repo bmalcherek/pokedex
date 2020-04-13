@@ -104,7 +104,7 @@ const EvolutionChain = (props) => {
   const successorName = loadedSuccessor ? successor.name.toUpperCase() : null;
   const successorSrc = loadedSuccessor ? successor.sprites.front_default : null;
   const successorArrow = loadedSuccessor ? (
-    <div className="evolution-chain__arrow col-lg-2 col-md-12 col-sm-12">
+    <div className="evolution-chain__arrow col-xl-2 col-lg-2 col-md-12 col-sm-12">
       <div className="evolution-chain__arrow__right--wrapper">
         <img
           src={ArrowRight}
@@ -123,7 +123,7 @@ const EvolutionChain = (props) => {
   ) : null;
 
   const ancestorJsx = loadedAncestor ? (
-    <div className="evolution-chain__item col-lg-2 col-md-12 col-sm-12">
+    <div className="evolution-chain__item col-xl-2 col-lg-2 col-md-12 col-sm-12">
       <div className="evolution-chain__item__image--wrapper">
         <img
           src={ancestorSrc}
@@ -138,7 +138,7 @@ const EvolutionChain = (props) => {
   ) : null;
 
   const successorJsx = loadedSuccessor ? (
-    <div className="evolution-chain__item col-lg-2 col-md-12 col-sm-12">
+    <div className="evolution-chain__item col-xl-2 col-lg-2 col-md-12 col-sm-12">
       <div className="evolution-chain__item__image--wrapper">
         <img
           src={successorSrc}
@@ -161,7 +161,7 @@ const EvolutionChain = (props) => {
         {ancestorJsx}
         {ancestorArrow}
 
-        <div className="evolution-chain__item col-lg-2 col-md-12 col-sm-12">
+        <div className="evolution-chain__item col-xl-2 col-lg-2 col-md-12 col-sm-12">
           <div className="evolution-chain__item__image--wrapper">
             <img
               src={curPokemonSrc}

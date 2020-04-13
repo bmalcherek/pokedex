@@ -1,6 +1,7 @@
 .pokedex__item--container {
   display: flex;
   width: 75%;
+  flex-flow: row wrap;
 }
 .pokedex--container {
   width: 100%;
@@ -10,11 +11,69 @@
 
 .pokedex--wrapper {
   width: 79%;
+  @media screen and (max-width: 1675px) {
+    width: 85%;
+  }
+  @media screen and (max-width: 1475px) {
+    width: 90%;
+  }
+  @media screen and (max-width: 1275px) {
+    width: 95%;
+  }
   display: flex;
+  justify-content: center;
+
+  @media screen and (max-width: 1023px) {
+    .filters--container {
+      display: none;
+    }
+
+    .show--container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 10000;
+
+      .filters--wrapper {
+        margin: 0;
+        border-radius: 0;
+      }
+    }
+
+    .hide {
+      display: none;
+    }
+  }
 }
 .pokedex {
   display: flex;
   justify-content: flex-start;
   flex-flow: row wrap;
   width: 100%;
+}
+
+.show-filters-btn--wrapper {
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+#show-filters-btn {
+  height: 4rem;
+  width: 50%;
+  background-color: white;
+  border: none;
+  border-radius: 2.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  &:hover {
+    background-color: #eee;
+  }
 }

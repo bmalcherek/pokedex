@@ -25,7 +25,7 @@ $img-scale: 1.9;
     &:hover {
       .pokemon-tile__img {
         margin-top: -1.5rem;
-        transition: 0.1s ease-in;
+        transition: 0.25s ease-in-out;
       }
     }
   }
@@ -54,17 +54,11 @@ $img-scale: 1.9;
 
   &__title {
     padding-left: 0.7rem;
-    @media screen and (max-width: 599px) {
-      font-size: 1.6rem;
-    }
   }
 
   &__id {
     padding-right: 0.5rem;
     color: #333;
-    @media screen and (max-width: 599px) {
-      font-size: 1.6rem;
-    }
   }
 
   &__type--wrapper {
@@ -79,8 +73,5 @@ $img-scale: 1.9;
     padding: 0.4rem 0.7rem;
     border-radius: 1rem;
     font-size: 1.5rem;
-    @media screen and (max-width: 599px) {
-      font-size: 1.3rem;
-    }
   }
 }
