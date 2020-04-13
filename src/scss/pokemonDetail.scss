@@ -38,6 +38,17 @@
       }
     }
 
+    .pokemon-detail__flavour-text--wrapper {
+      width: 60%;
+      @media screen and (max-width: 1023px) {
+        width: 80%;
+      }
+      padding: 2rem;
+      text-align: center;
+      color: #333;
+      font-style: italic;
+    }
+
     .pokemon-detail__stats--wrapper {
       margin: 0 5rem;
     }

@@ -24,7 +24,7 @@ const PokemonDetail = () => {
       setLoadedPokemon(true);
       document.title =
         res.data.name.charAt(0).toUpperCase() + res.data.name.substring(1);
-      // console.log("pokemon", res.data);
+      console.log("pokemon", res.data);
     });
   }, [pokemonId]);
 
@@ -33,7 +33,7 @@ const PokemonDetail = () => {
       axios.get(pokemon.species.url).then((res) => {
         setSpecies(res.data);
         setLoadedSpecies(true);
-        // console.log("species", res.data);
+        console.log("species", res.data);
       });
     }
   }, [loadedPokemon, pokemonId]);
@@ -49,6 +49,13 @@ const PokemonDetail = () => {
       });
     }
   }, [pokemon, loadedPokemon]);
+
+  const flavourText = loadedSpecies
+    ? species.flavor_text_entries.find((el) => el.language.name === "en")
+        .flavor_text
+    : null;
+
+  console.log(flavourText);
 
   const name = loadedPokemon ? pokemon.name.toUpperCase() : null;
   const habitat = loadedSpecies
@@ -104,6 +111,9 @@ const PokemonDetail = () => {
             <h1 className="pokemon__name">{name}</h1>
           </div>
           {id}
+        </div>
+        <div className="pokemon-detail__flavour-text--wrapper">
+          <span className="pokemon-detail__flavour-text">"{flavourText}"</span>
         </div>
         <div className="column--container">
           <div className="content-column--wrapper col-xl-6 col-lg-6 col-md-12 col-sm-12">

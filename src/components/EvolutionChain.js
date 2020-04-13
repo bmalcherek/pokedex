@@ -129,10 +129,6 @@ const EvolutionChain = (props) => {
     ? props.pokemon.name.toUpperCase()
     : null;
 
-  if (loadedSuccessor) {
-    console.log(successor.sprites.front_default);
-  }
-
   const successorName = loadedSuccessor ? successor.name.toUpperCase() : null;
   const successorImg = loadedSuccessor ? (
     successor.sprites.front_default ? (
