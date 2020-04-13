@@ -44,21 +44,24 @@ $img-scale: 1.9;
     display: flex;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
-  }
-
-  &__info--wrapper {
     display: flex;
     justify-content: space-between;
     flex-flow: row wrap;
   }
 
-  &__title {
-    padding-left: 0.7rem;
+  &__title--wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
   }
 
-  &__id {
-    padding-right: 0.5rem;
+  &__id--wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
     color: #333;
+    margin-top: -3rem;
   }
 
   &__type--wrapper {
