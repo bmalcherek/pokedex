@@ -12,7 +12,16 @@ const Filters = (props) => {
 
   useEffect(() => {
     axios.get("https://pokeapi.co/api/v2/type/").then((res) => {
-      setTypes(res.data.results);
+      setTypes(
+        res.data.results.sort((type, otherType) => {
+          if (type.name > otherType.name) {
+            return 1;
+          } else if (type.name < otherType.name) {
+            return -1;
+          }
+          return 0;
+        })
+      );
     });
   }, []);
 
@@ -23,16 +32,37 @@ const Filters = (props) => {
     };
   });
 
+  const selectStyles = {
+    valueContainer: (provided, state) => ({
+      ...provided,
+      height: "5.2rem",
+    }),
+    placeholder: (provided, state) => ({
+      ...provided,
+      paddingLeft: "1rem",
+    }),
+    control: (provided, state) => ({
+      ...provided,
+      border: "1px solid #aaa",
+    }),
+  };
+
   return (
     <div className="filters--container">
       <div className="filters--wrapper">
         <div className="filters__title--wrapper">
-          <h2 className="filters__title">Filters</h2>
+          <h2 className="filters__title">FILTERS</h2>
         </div>
         <div className="filters__name--wrapper">
+          <div className="filters__name__title--wrapper">
+            <span className="filters__name__title">NAME FILTER</span>
+          </div>
           <NameFilter history={history} />
         </div>
-        <div className="filters__type--container">
+        <div className="filters__type--wrapper">
+          <div className="filters__type__title--wrapper">
+            <span className="filters__type__title">TYPE FILTER</span>
+          </div>
           <div className="filters__type__select--wrapper">
             <Select
               isMulti
@@ -40,6 +70,7 @@ const Filters = (props) => {
               options={typesOptions}
               placeholder="Type"
               value={props.filters.type.value}
+              styles={selectStyles}
               onChange={(event) => {
                 if (event) {
                   Promise.all(
@@ -57,6 +88,9 @@ const Filters = (props) => {
               }}
             />
           </div>
+        </div>
+        <div className="created-by--wrapper">
+          <span className="created-by">Created by Bartosz Malcherek</span>
         </div>
       </div>
     </div>

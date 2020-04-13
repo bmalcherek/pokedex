@@ -32,7 +32,7 @@ $img-scale: 1.9;
 
   &__img {
     width: 9.6rem * $img-scale;
-    // image-rendering: pixelated;
+    image-rendering: pixelated;
     image-rendering: crisp-edges;
   }
 
@@ -40,7 +40,6 @@ $img-scale: 1.9;
     width: 100%;
     height: 100%;
     background-color: #ff5c41;
-    // background-color: #ee1515;
     border-top: 0.3rem solid #222224;
     display: flex;
     border-bottom-left-radius: inherit;
@@ -62,7 +61,7 @@ $img-scale: 1.9;
 
   &__id {
     padding-right: 0.5rem;
-    color: #444;
+    color: #333;
     @media screen and (max-width: 599px) {
       font-size: 1.6rem;
     }

@@ -2,13 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-import PokemonStats from "./PokemonStats";
-import Types from "./Types";
-
 const PokemonTile = (props) => {
   const [pokemon, setPokemon] = useState({ loaded: false });
   const [loaded, setLoaded] = useState(false);
-  const [stats, setStats] = useState({});
 
   useEffect(() => {
     axios.get(props.url).then((res) => {
@@ -16,18 +12,6 @@ const PokemonTile = (props) => {
       setLoaded(true);
     });
   }, [props.url]);
-
-  useEffect(() => {
-    if (loaded) {
-      setStats({
-        loaded,
-        baseXp: pokemon.base_experience,
-        height: pokemon.height,
-        weight: pokemon.weight,
-        advStats: pokemon.stats,
-      });
-    }
-  }, [pokemon, loaded]);
 
   const imgSrc = loaded ? pokemon.sprites.front_default : null;
   const name = loaded ? pokemon.name.toUpperCase() : null;
