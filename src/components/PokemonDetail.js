@@ -18,6 +18,8 @@ const PokemonDetail = () => {
 
   const { pokemonId } = useParams();
 
+  useEffect(() => window.scrollTo(0, 0), []);
+
   useEffect(() => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`).then((res) => {
       setPokemon(res.data);

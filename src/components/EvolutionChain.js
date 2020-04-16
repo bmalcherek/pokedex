@@ -92,7 +92,7 @@ const EvolutionChain = (props) => {
   ) : null;
 
   const ancestorArrow = loadedAncestor ? (
-    <div className="evolution-chain__arrow col-lg-2 col-md-12 col-sm-12">
+    <div className="evolution-chain__arrow col-xl-2 col-lg-2 col-md-12 col-sm-12">
       <div className="evolution-chain__arrow__right--wrapper">
         <img
           src={ArrowRight}
