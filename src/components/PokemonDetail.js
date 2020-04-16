@@ -24,7 +24,7 @@ const PokemonDetail = () => {
       setLoadedPokemon(true);
       document.title =
         res.data.name.charAt(0).toUpperCase() + res.data.name.substring(1);
-      console.log("pokemon", res.data);
+      // console.log("pokemon", res.data);
     });
   }, [pokemonId]);
 
@@ -33,7 +33,7 @@ const PokemonDetail = () => {
       axios.get(pokemon.species.url).then((res) => {
         setSpecies(res.data);
         setLoadedSpecies(true);
-        console.log("species", res.data);
+        // console.log("species", res.data);
       });
     }
   }, [loadedPokemon, pokemonId]);
@@ -51,11 +51,9 @@ const PokemonDetail = () => {
   }, [pokemon, loadedPokemon]);
 
   const flavourText = loadedSpecies
-    ? species.flavor_text_entries.find((el) => el.language.name === "en")
+    ? species.flavor_text_entries.find((part) => part.language.name === "en")
         .flavor_text
     : null;
-
-  console.log(flavourText);
 
   const name = loadedPokemon ? pokemon.name.toUpperCase() : null;
   const habitat = loadedSpecies
