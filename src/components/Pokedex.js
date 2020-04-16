@@ -24,17 +24,20 @@ const Pokedex = () => {
 
   useEffect(() => {
     let temp;
-    if (isFiltered) {
-      temp = newPokemons.map((pokemon) => (
-        <PokemonTile url={pokemon.pokemon.url} key={pokemon.pokemon.name} />
-      ));
-    } else {
-      temp = newPokemons.map((pokemon) => (
-        <PokemonTile url={pokemon.url} key={pokemon.name} />
-      ));
+    if (newPokemons.length > 0) {
+      if (isFiltered) {
+        temp = newPokemons.map((pokemon) => (
+          <PokemonTile url={pokemon.pokemon.url} key={pokemon.pokemon.name} />
+        ));
+      } else {
+        temp = newPokemons.map((pokemon) => (
+          <PokemonTile url={pokemon.url} key={pokemon.name} />
+        ));
+      }
+      setPokedexItems([...pokedexItems, ...temp]);
+      setNewPokemons([]);
     }
-    setPokedexItems([...pokedexItems, ...temp]);
-  }, [newPokemons]);
+  }, [newPokemons, isFiltered]);
 
   useEffect(() => {
     document.title = "Pokedex";
@@ -46,9 +49,12 @@ const Pokedex = () => {
     if (typeFilter.length > 0) {
       setIsFiltered(true);
     } else {
-      setIsFiltered(false);
       setPokedexItems([]);
       setUrl("https://pokeapi.co/api/v2/pokemon/");
+      if (isFiltered) {
+        setHasMore(true);
+      }
+      setIsFiltered(false);
     }
   }, [typeFilter, isFiltered]);
 
