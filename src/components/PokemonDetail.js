@@ -26,7 +26,6 @@ const PokemonDetail = () => {
       setLoadedPokemon(true);
       document.title =
         res.data.name.charAt(0).toUpperCase() + res.data.name.substring(1);
-      // console.log("pokemon", res.data);
     });
   }, [pokemonId]);
 
@@ -35,9 +34,9 @@ const PokemonDetail = () => {
       axios.get(pokemon.species.url).then((res) => {
         setSpecies(res.data);
         setLoadedSpecies(true);
-        // console.log("species", res.data);
       });
     }
+    // eslint-disable-next-line
   }, [loadedPokemon, pokemonId]);
 
   useEffect(() => {

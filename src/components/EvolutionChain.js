@@ -41,6 +41,7 @@ const EvolutionChain = (props) => {
         setLoadedEvolutionChain(true);
       });
     }
+    // eslint-disable-next-line
   }, [props.loaded]);
 
   useEffect(() => {
@@ -72,6 +73,7 @@ const EvolutionChain = (props) => {
         }
       }
     }
+    // eslint-disable-next-line
   }, [loadedEvolutionChain, evolutionChain.chain, pokemonId]);
 
   const ancestorName = loadedAncestor ? ancestor.name.toUpperCase() : null;

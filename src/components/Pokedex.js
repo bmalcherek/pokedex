@@ -39,6 +39,7 @@ const Pokedex = () => {
       setPokedexItems([...pokedexItems, ...temp]);
       setNewPokemons([]);
     }
+    // eslint-disable-next-line
   }, [newPokemons, isFiltered]);
 
   useEffect(() => {
@@ -119,8 +120,6 @@ const Pokedex = () => {
   const pokemonTiles = pokedexItems.map((item) => (
     <PokemonTile url={item.url} key={item.name} />
   ));
-
-  // console.log(typeFilter, typeFilterItems, isFiltered);
 
   return (
     <div className="pokedex--container">
