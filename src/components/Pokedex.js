@@ -26,13 +26,15 @@ const Pokedex = () => {
     let temp;
     if (newPokemons.length > 0) {
       if (isFiltered) {
-        temp = newPokemons.map((pokemon) => (
-          <PokemonTile url={pokemon.pokemon.url} key={pokemon.pokemon.name} />
-        ));
+        temp = newPokemons.map((pokemon) => ({
+          url: pokemon.pokemon.url,
+          name: pokemon.pokemon.name,
+        }));
       } else {
-        temp = newPokemons.map((pokemon) => (
-          <PokemonTile url={pokemon.url} key={pokemon.name} />
-        ));
+        temp = newPokemons.map((pokemon) => ({
+          url: pokemon.url,
+          name: pokemon.name,
+        }));
       }
       setPokedexItems([...pokedexItems, ...temp]);
       setNewPokemons([]);
@@ -114,6 +116,10 @@ const Pokedex = () => {
     },
   };
 
+  const pokemonTiles = pokedexItems.map((item) => (
+    <PokemonTile url={item.url} key={item.name} />
+  ));
+
   // console.log(typeFilter, typeFilterItems, isFiltered);
 
   return (
@@ -143,7 +149,7 @@ const Pokedex = () => {
               </div>
             }
           >
-            {pokedexItems}
+            {pokemonTiles}
           </InfiniteScroll>
         </div>
       </div>
